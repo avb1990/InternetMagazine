@@ -1,0 +1,27 @@
+.groupGoods {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 300px;
+}
+
+.goods {
+	position: absolute;
+	left: 300px;
+	top: 0px;
+	width: 300px;
+}
+
+.editGroup {
+	position: absolute;
+	left: 0px;
+	top: 400px;
+	width: 200px;
+}
+
+.editGoods {
+	position: absolute;
+	left: 300px;
+	top: 400px;
+	width: 200px;
+}

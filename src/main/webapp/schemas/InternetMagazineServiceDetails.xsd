@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://ru/mail/fortune/webservices/internetmagazine/goods"
+	targetNamespace="http://ru/mail/fortune/webservices/internetmagazine/goods"
+	elementFormDefault="qualified">
+
+	<xsd:complexType name="GoodsXml">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:integer" />
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="groupId" type="xsd:integer" />
+			<xsd:element name="cost" type="xsd:double" />
+			<xsd:element name="amount" type="xsd:integer" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GoodsGroupXml">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:integer" />
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="goods" type="GoodsXml" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GoodsBasketXml">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:integer" />
+			<xsd:element name="goods" type="Basket2GoodsXml"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="date" type="xsd:dateTime" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Basket2GoodsXml">
+		<xsd:sequence>
+			<xsd:element name="basketId" type="xsd:integer" />
+			<xsd:element name="goodsId" type="xsd:integer" />
+			<xsd:element name="amount" type="xsd:integer" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="ActionStatus">
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string" />
+			<xsd:element name="isOk" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+	<xsd:element name="GetAllGoodsGroupsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GetAllGoodsGroupsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="goodsGroups" type="GoodsGroupXml"
+					minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="InsertGoodsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="id" type="xsd:integer" />
+				<xsd:element name="name" type="xsd:string" />
+				<xsd:element name="cost" type="xsd:double" />
+				<xsd:element name="groupId" type="xsd:integer" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="InsertGoodsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="goodsId" type="xsd:integer" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+
+
+
+	<xsd:element name="InsertGoodsGroupRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="insertGoodsGroup" type="GoodsGroupXml"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="InsertGoodsGroupResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsGroupRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="deleteGoodsGroup" type="xsd:integer" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsGroupResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+
+	<xsd:element name="InsertGoodsBasketRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="insertGoods" type="GoodsBasketXml"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="InsertGoodsBasketResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsBasketRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="deleteGoods" type="xsd:integer" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="DeleteGoodsBasketResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+
+
+	<xsd:element name="GetBasketsByPeriodRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="startDate" type="xsd:date" />
+				<xsd:element name="endDate" type="xsd:date" />
+				<xsd:element name="groupId" type="xsd:integer" />
+				<xsd:element name="goodsId" type="xsd:integer" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GetBasketsByPeriodResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="baskets" type="GoodsBasketXml"
+					minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="TestIsOkRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="TestIsOkResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="actionStatus" type="ActionStatus"
+					minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

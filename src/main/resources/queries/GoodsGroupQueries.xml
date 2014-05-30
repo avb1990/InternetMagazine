@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<queries>
+	<query>create table goodsgroup(ID INT PRIMARY KEY NOT NULL,
+		NAME TEXT
+		NOT NULL)
+	</query>
+	<query>insert into goodsgroup(id,name) values(1,"Televisions")</query>
+	<query>insert into goodsgroup(id,name) values(2,"Bags")</query>
+	<query>insert into goodsgroup(id,name) values(3,"PC")</query>
+	<query>insert into goodsgroup(id,name) values(4,"Phones")</query>
+	<query>insert into goodsgroup(id,name) values(5,"Games")</query>
+	<query>insert into goodsgroup(id,name) values(6,"Fruits")</query>
+	<query>insert into goodsgroup(id,name) values(7,"Cloths")</query>
+	<query>insert into goodsgroup(id,name) values(8,"KeyBords")</query>
+</queries>

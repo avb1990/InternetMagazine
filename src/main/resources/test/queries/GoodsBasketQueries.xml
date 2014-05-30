@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<queries>
+	<query>create table goodsbasket(ID INT PRIMARY KEY NOT NULL,
+		date datetime NOT NULL default current_timestamp)
+	</query>
+	<query>create table goodsInBasket(basketid int ,goodsid int,amount
+		int )
+	</query>
+</queries>

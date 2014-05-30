@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sws="http://www.springframework.org/schema/web-services"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+							http://www.springframework.org/schema/web-services
+							http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+
+	default-init-method="init">
+
+
+	<context:component-scan base-package="ru.mail.fortune.internetmagazine" />
+	<sws:annotation-driven />
+	<sws:interceptors>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="DeleteGoodsRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="DeleteGoodsBasketRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="DeleteGoodsGroupRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="InsertGoodsRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="InsertGoodsGroupRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="GetBasketsByPeriodRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+		<sws:payloadRoot
+			namespaceUri="http://ru/mail/fortune/webservices/internetmagazine/goods"
+			localPart="TestIsOkRequest">
+			<bean
+				class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+				<property name="validationCallbackHandler" ref="callbackHandler" />
+				<property name="validationActions" value="UsernameToken" />
+			</bean>
+		</sws:payloadRoot>
+	</sws:interceptors>
+	<bean id="callbackHandler"
+		class="org.springframework.ws.soap.security.wss4j.callback.SimplePasswordValidationCallbackHandler">
+		<property name="users">
+			<props>
+				<prop key="admin">1qaz2wsx</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="InternetMagazineDetailsService"
+		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
+		lazy-init="true">
+		<property name="schemaCollection">
+			<bean
+				class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+				<property name="inline" value="true" />
+				<property name="xsds">
+					<list>
+						<value>schemas/InternetMagazineServiceDetails.xsd</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="portTypeName" value="InternetMagazineDetailsService" />
+		<property name="serviceName" value="InternetMagazineDetailsService" />
+		<property name="locationUri" value="/endpoints" />
+	</bean>
+
+	<bean id="webinfPath"
+		class="org.springframework.web.context.support.ServletContextResource">
+		<constructor-arg ref="servletContext" />
+		<constructor-arg value="WEB-INF/" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.sqlite.JDBC" />
+		<property name="url"
+			value="#{'jdbc:sqlite:'+webinfPath.file.absolutePath+'/schema.db'}" />
+		<!-- <property name="url" value="jdbc:sqlite::memory:" /> -->
+		<property name="defaultAutoCommit" value="true" />
+	</bean>
+
+	<bean id="GoodsDAO" class="ru.mail.fortune.internetmagazine.goods.GoodsDAOImpl">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+		<constructor-arg type="java.lang.String" value="/queries/GoodsQueries.xml" />
+	</bean>
+	<bean id="GroupGoodsDAO"
+		class="ru.mail.fortune.internetmagazine.goods.GroupGoodsDAOImpl">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+		<constructor-arg type="java.lang.String"
+			value="/queries//GoodsGroupQueries.xml" />
+	</bean>
+	<bean class="ru.mail.fortune.internetmagazine.goods.BasketGoodsDAOImpl">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+		<constructor-arg type="java.lang.String"
+			value="/queries//GoodsBasketQueries.xml" />
+	</bean>
+
+
+</beans>

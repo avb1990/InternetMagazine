@@ -1,0 +1,18 @@
+.groupGoodsOrders {
+	width: 200px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.goodsOrders {
+	width: 600px;
+	position: absolute;
+	left: 200px;
+	top: 0px;
+}
+
+.basketOrders {
+	position: absolute;
+	top: 300px;
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<queries>
+	<query>create table goods(ID INT PRIMARY KEY NOT NULL,
+		NAME TEXT NOT
+		NULL,
+		cost real not null,
+		groupid int)
+	</query>
+
+	<!-- televisions -->
+	<query>
+		insert into goods(id,name,cost,groupid) values(1,"SAMSUNG
+		TV",10000,1)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid) values(2,"PHILIPS
+		TV",15999,1)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid) values(3,"BOSH
+		TV",2899.99,1)
+	</query>
+
+	<!-- bags -->
+	<query>
+		insert into goods(id,name,cost,groupid) values(4,"Calvin
+		Klayn",1500,2)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid) values(5,"Sport
+		Bag",300.78,2)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(6,"DGb
+		ag",2899.99,2)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid) values(7,"Love NY
+		bag",408.75,1)
+	</query>
+
+	<!-- pc -->
+
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(8,"DELL",10000,3)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(9,"MicroStar",12000,3)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(10,"Acer",25000,3)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(11,"HP",17000,3)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(12,"Microsoft",25000,3)
+	</query>
+
+	<!-- Phones -->
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(13,"Fly",10000,4)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(14,"IPhone100500",21000,4)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(15,"Samsung
+		Galaxy",25000,4)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(16,"Nokia",21000.999,4)
+	</query>
+
+	<!-- Games -->
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(17,"Kurosava",100,5)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(18,"CS",2500,5)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(19,"Last
+		chanse",1000,5)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(20,"War
+		Craft",599.99,5)
+	</query>
+
+
+	<!-- fruits -->
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(21,"Banana",25,6)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(22,"Apple",50,6)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(23,"WaterMelon",90,6)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(24,"Melon",150,6)
+	</query>
+
+	<!-- cloths -->
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(25,"Pants",500,7)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(26,"Coat",5100,7)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(27,"Blouse",2000,7)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(28,"Hat",500,7)
+	</query>
+
+	<!-- keybords -->
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(29,"Microsoft",500,8)
+	</query>
+	<query>
+		insert into goods(id,name,cost,groupid)
+		values(30,"KiberNote",300,8)
+	</query>
+</queries>

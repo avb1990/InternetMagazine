@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<queries>
+	<query>create table goodsgroup(ID INT PRIMARY KEY NOT NULL,
+   								NAME TEXT NOT NULL)
+   </query>
+</queries>
